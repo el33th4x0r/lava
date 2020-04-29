@@ -120,12 +120,8 @@ def p_statement_action(t):
 def p_statement_rule(t):
     '''statement : LABEL DEFN rhs'''
     # check to see if a weight is specified
-    if len(t) > 4:
-        weight = t[4]
-        rhs = t[6]
-    else:
-        weight = 1
-        rhs = t[3]
+    rhs = t[3]
+    weight = t[3].weight
     label = t[1]
     if label in names:
         existing = names[label]
@@ -133,8 +129,9 @@ def p_statement_rule(t):
             existing.val.append(rhs)
             existing.weight.append(weight)
         else:
-            new = Node(TCHOICES, [rhs, existing], [weight] + existing.weight)
+            new = Node(TCHOICES, [rhs, existing], weight + existing.weight)
             names[label] = new
+            t[0] = label
     else:
         names[label] = rhs
         t[0] = label
@@ -147,17 +144,16 @@ def p_rhs(t):
     if len(t) == 2:
         t[0] = t[1]
     elif len(t) == 5:
-        t[4].weight = t[2]
+        t[4].weight = [t[2]]
         t[0] = t[4]
     else: # we have an OR expression
+        existing = t[1]
         if len(t) == 4:
             weight = 1
-            existing = t[1]
             rhs = t[3]
         else:
-            existing = t[1]
-            rhs = t[6]
             weight = t[4]
+            rhs = t[6]
         if existing.op == TCHOICES:
             existing.val.append(rhs)
             existing.weight.append(weight)
