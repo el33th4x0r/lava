@@ -1,11 +1,21 @@
 #
 # Lava - A production grammar system.
 #
-# Given a grammar, generate random potential inputs that satisfy
-# that grammar. This is useful for test generation.
+# Given a grammar, generate random files that satisfy that grammar.
+# This is useful, among other things, for test generation.
 #
-# (C) 2020, Emin Gun Sirer.
-# See the file LICENSE for licensing details.
+# Copyright (C) 2020, Emin Gun Sirer.
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, version 3 of the License.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    See the file COPYING for license details.
 #
 import sys
 import ply.lex as lex
