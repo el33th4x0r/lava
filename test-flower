@@ -1,0 +1,5 @@
+root: ">=" | ">=" root
+stalk: "-" | {10} "-" stalk | stalk flower
+flower: "*"
+seed: root stalk "\n"
+

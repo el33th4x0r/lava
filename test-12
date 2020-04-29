@@ -1,0 +1,18 @@
+subject: "I" 
+verb: "CAME"
+object: "HOME"
+stmt: subject " " verb " " object " AT " hour "\n"
+
+program: start stmt stmt stmt
+
+action start {"
+global clock
+clock = 0
+"}
+
+action hour {"
+global clock
+clock += 1
+print('%d' % clock, end='')
+"}
+

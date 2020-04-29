@@ -1,0 +1,4 @@
+subject: "I" | "YOU"
+verb: "CAME" | "WENT"
+object: "HOME" | "BACK"
+stmt: subject " " verb " " object "\n"
