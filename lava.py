@@ -203,10 +203,10 @@ with open(sys.argv[1], "r") as f:
     p = parser.parse(grammar, debug=debug)
 
     # dump all the rules
-    for p in names:
-        print ("rule for %s" % p)
-        print (names[p])
-    print ("last production rule is %s" % last)
+#    for p in names:
+#        print ("rule for %s" % p)
+#        print (names[p])
+#    print ("last production rule is %s" % last)
     
     if last is not None:
 #        print (names[last])
