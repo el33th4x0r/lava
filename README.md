@@ -13,26 +13,33 @@ How to Use
 
 You specify a grammar in traditional yacc format, amended with weights, and actions. For instance:
 
+```yacc
 root: ">=" | ">=" root
 stalk: "-" | "-" stalk | stalk flower
 flower: "*"
 seed: root stalk "\n"
+```
 
 is a simple production grammar that will generate sideways flowers, with roots, a stem, and optionally a flower, like this:
-  >=---
-  >=----**
-  >=>=>=-**
-  >=>=>=-
-
+```
+>=---
+>=----**
+>=>=>=-**
+>=>=>=-
+```
 
 These flowers are kind of squat. We can direct the code generation by associating weights with certain productions. For instance, changing the stalk rule to:
 
+```yacc
 stalk: "-" | {10} "-" stalk | stalk flower
+```
 
 will create flowers with much longer stalks, like this
-  >=>=>=>=--------------------------------------*
-  >=----------------------------------------*******
-  >=--
+```
+>=>=>=>=--------------------------------------*
+>=----------------------------------------*******
+>=--
+```
 
 Weights are specified in any unit you like, and are interpreted with respect to each other. Default weight is "1".
 So the second production above is 10 times more likely than the other two production rules, and will account for
@@ -40,6 +47,7 @@ So the second production above is 10 times more likely than the other two produc
 
 You can also associate actions with productions. So the grammar:
 
+```yacc
 subject: "I" 
 verb: "CAME"
 object: "HOME"
@@ -57,11 +65,14 @@ global clock
 clock += 1
 print('%d' % clock, end='')
 "}
+```
 
 will generate:
-    I CAME HOME AT 1
-    I CAME HOME AT 2
-    I CAME HOME AT 3
+```
+I CAME HOME AT 1
+I CAME HOME AT 2
+I CAME HOME AT 3
+```
 
 Enjoy!
 - Emin Gun Sirer
